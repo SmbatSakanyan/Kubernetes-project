@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata: 
+ name: app-deployment
+ labels:
+  name: app-deployment
+  app: simple-app
+
+spec:
+ replicas: {{ .Values.replicas }}
+ 
+ selector:
+  matchLabels:
+    name: app-deployment
+    app: simple-app
+ 
+ template:
+  metadata:
+    name: my-app
+    labels:
+      name: app-deployment
+      app: simple-app
+  spec:
+    containers:
+      - name : container-web
+        # image: 490485542279.dkr.ecr.us-west-2.amazonaws.com/dimple-app:main-c94aa21
+        image: {{ .Values.image.repo }}:{{ .Values.image.version }}
+        ports:
+          - containerPort: 3000

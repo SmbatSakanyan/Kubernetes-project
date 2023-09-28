@@ -1,0 +1,59 @@
+---
+name: Build and Push Image to AWS ECR
+on:
+  push:
+    branches: [ main ]
+    paths: ['APPLICATION/**']
+permissions:
+  contents: write
+
+jobs:
+  build-and-push:
+    name: Build and Push to ECR
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: APPLICATION
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-2
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
+    - name: Build, Tag, and Push the Image to Amazon ECR
+      id: build-image
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REPOSITORY: dimple-app
+        # IMAGE_TAG: latest
+      run: |
+        git_hash=$(git rev-parse --short "$GITHUB_SHA")
+
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:${GITHUB_REF##*/}-$git_hash .
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:${GITHUB_REF##*/}-$git_hash
+        echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:${GITHUB_REF##*/}-$git_hash"
+    
+    
+    # - name: Update Version
+    #   run: |
+    #       pwd
+    #       ls
+    #       git_hash=$(git rev-parse --short "$GITHUB_SHA")
+    #       version=$(cat ../Helm/values.yaml | grep version: | awk '{print $2}')
+    #       sed -i "s/$version/${GITHUB_REF##*/}-$git_hash/" ../Helm/values.yaml
+          
+    # - name: Commit and push changes
+    #   uses: devops-infra/action-commit-push@master
+    #   with:
+    #     github_token: ${{ secrets.TOKEN }}
+    #     commit_message: Version updated
