@@ -34,26 +34,26 @@ resource "helm_release" "nginx" {
 }
 
 
-# resource "helm_release" "argocd" {
-#   #   depends_on       = [module.nginx-controller]
-#   name             = "argocd"
-#   repository       = "https://argoproj.github.io/argo-helm"
-#   chart            = "argo-cd"
-#   namespace        = "argocd"
-#   create_namespace = true
-# }
+resource "helm_release" "argocd" {
+  #   depends_on       = [module.nginx-controller]
+  name             = "argocd"
+  repository       = "https://argoproj.github.io/argo-helm"
+  chart            = "argo-cd"
+  namespace        = "argocd"
+  create_namespace = true
+}
 
-# resource "helm_release" "app" {
-#   #   depends_on       = [module.nginx-controller]
-#   name             = "argocd-app"
-#   repository       = "https://argoproj.github.io/argo-helm"
-#   chart            = "argocd-apps"
-#   namespace        = "argocd"
-#   create_namespace = true
-#   values = [
-#     "${file("values.yaml")}"
-#   ]
-# }
+resource "helm_release" "app" {
+  #   depends_on       = [module.nginx-controller]
+  name             = "argocd-app"
+  repository       = "https://argoproj.github.io/argo-helm"
+  chart            = "argocd-apps"
+  namespace        = "argocd"
+  create_namespace = true
+  values = [
+    "${file("values.yaml")}"
+  ]
+}
 
 # resource "helm_release" "image-updater" {
 #   #   depends_on       = [module.nginx-controller]
