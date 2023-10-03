@@ -14,12 +14,12 @@ provider "helm" {
     # config_path = "~/.kube/config"
   }
 }
-resource "aws_ecr_repository" "week4_ecr" {
-  name = "dimple-app"
-  image_scanning_configuration {
-    scan_on_push = true
-  }
-}
+# resource "aws_ecr_repository" "week4_ecr" {
+#   name = "dimple-app"
+#   image_scanning_configuration {
+#     scan_on_push = true
+#   }
+# }
 
 
 resource "helm_release" "nginx" {

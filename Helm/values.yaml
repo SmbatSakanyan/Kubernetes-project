@@ -1,4 +1,4 @@
 replicas: 2
 image:
   repo: 548844171305.dkr.ecr.us-east-2.amazonaws.com/dimple-app
-  version: 0.4.0main-d7abdb4
+  version: v0.5.0main-0e313be
