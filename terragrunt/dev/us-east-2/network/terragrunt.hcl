@@ -1,5 +1,5 @@
 terraform {
-  source = "../../../../modules/infrustructure-modules/NETWORK"
+  source = "../../../../modules/infrustructure-modules/network"
 }
 
 

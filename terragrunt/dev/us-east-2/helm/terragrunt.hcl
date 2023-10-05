@@ -1,5 +1,5 @@
 terraform {
-  source = "../../../../modules/kubernetes/HELM/nginx"
+  source = "../../../../modules/kubernetes/helm/nginx"
 }
 
 inputs = {
@@ -10,7 +10,7 @@ inputs = {
 }
 
 dependency "eks" {
-  config_path = "../EKS"
+  config_path = "../eks"
   // mock_outputs = {
   //   cluster_endpoint ="clusterendp"
   //   cluster_certificate_authority_data =""

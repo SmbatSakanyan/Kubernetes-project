@@ -1,5 +1,5 @@
 terraform {
-  source = "../../../../modules/infrustructure-modules/CLUSTER"
+  source = "../../../../modules/infrustructure-modules/cluster"
 }
 
 inputs = {
@@ -9,7 +9,7 @@ inputs = {
 }
 
 dependency "vpc" {
-  config_path = "../Network"
+  config_path = "../network"
 
   mock_outputs = {
     private_subnets = ["subnet-1234", "subnet-5678", "subnet-91011"]
