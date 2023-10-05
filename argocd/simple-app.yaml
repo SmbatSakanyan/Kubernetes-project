@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: simple-app
+  namespace: argocd
+  annotations:
+        argocd-image-updater.argoproj.io/image-list: 548844171305.dkr.ecr.us-east-2.amazonaws.com/dimple-app:~v0.5
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: development
+  source:
+    repoURL: https://github.com/SmbatSakanyan/Kubernetes-project 
+    targetRevision: main
+    path: Helm 
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true 
+    syncOptions:
+    - CreateNamespace=true
