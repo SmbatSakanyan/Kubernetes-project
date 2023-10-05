@@ -1,8 +1,9 @@
 applications:
     - name: simple-app
       namespace: argocd
-      annotations:
-        argocd-image-updater.argoproj.io/image-list: simple-app=548844171305.dkr.ecr.us-east-2.amazonaws.com/dimple-app:~v0.5.0main-0e313be
+      additionalAnnotations:
+        argocd-image-updater.argoproj.io/image-list: simple-app=548844171305.dkr.ecr.us-east-2.amazonaws.com/dimple-app:~v0.5
+        argocd-image-updater.argoproj.io/write-back-method: argocd
       finalizers:
       - resources-finalizer.argocd.argoproj.io
       project: default

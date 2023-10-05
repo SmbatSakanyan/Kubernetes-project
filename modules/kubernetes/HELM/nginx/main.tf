@@ -43,17 +43,17 @@ resource "helm_release" "argocd" {
   create_namespace = true
 }
 
-# resource "helm_release" "app" {
-#   #   depends_on       = [module.nginx-controller]
-#   name             = "argocd-app"
-#   repository       = "https://argoproj.github.io/argo-helm"
-#   chart            = "argocd-apps"
-#   namespace        = "argocd"
-#   create_namespace = true
-#   values = [
-#     "${file("values.yaml")}"
-#   ]
-# }
+resource "helm_release" "app" {
+  #   depends_on       = [module.nginx-controller]
+  name             = "argocd-app"
+  repository       = "https://argoproj.github.io/argo-helm"
+  chart            = "argocd-apps"
+  namespace        = "argocd"
+  create_namespace = true
+  values = [
+    "${file("values.yaml")}"
+  ]
+}
 
 resource "helm_release" "image-updater" {
   #   depends_on       = [module.nginx-controller]
@@ -62,7 +62,7 @@ resource "helm_release" "image-updater" {
   chart            = "argocd-image-updater"
   namespace        = "argocd"
   create_namespace = true
-  # values = [
-  #   "${file("values1.yaml")}"
-  # ]
+  values = [
+    "${file("values1.yaml")}"
+  ]
 }

@@ -26,6 +26,9 @@ spec:
     containers:
       - name : container-web
         # image: 490485542279.dkr.ecr.us-west-2.amazonaws.com/dimple-app:main-c94aa21
-        image: {{ .Values.image.repo }}:{{ .Values.image.version }}
+        image: {{ .Values.image.repo }}
         ports:
           - containerPort: 3000
+
+
+      # :{{ .Values.image.version }}    
