@@ -11,7 +11,7 @@ applications:
       source:
         repoURL: https://github.com/SmbatSakanyan/Kubernetes-project
         targetRevision: main
-        path: Helm
+        path: helm
       destination:
         server: https://kubernetes.default.svc
         namespace: default
