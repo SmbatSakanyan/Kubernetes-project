@@ -1,7 +1,3 @@
-# provider "aws" {
-#   region = var.region
-# }
-
 provider "helm" {
   kubernetes {
     host                   = var.cluster_endpoint
@@ -35,7 +31,7 @@ resource "helm_release" "nginx" {
 
 
 resource "helm_release" "argocd" {
-  #   depends_on       = [module.nginx-controller]
+  depends_on       = [helm_release.nginx]
   name             = "argocd"
   repository       = "https://argoproj.github.io/argo-helm"
   chart            = "argo-cd"
@@ -43,8 +39,20 @@ resource "helm_release" "argocd" {
   create_namespace = true
 }
 
+resource "helm_release" "image-updater" {
+  depends_on       = [helm_release.argocd]
+  name             = "argocd-image-updater"
+  repository       = "https://argoproj.github.io/argo-helm"
+  chart            = "argocd-image-updater"
+  namespace        = "argocd"
+  create_namespace = true
+  values = [
+    "${file("values1.yaml")}"
+  ]
+}
+
 resource "helm_release" "app" {
-  #   depends_on       = [module.nginx-controller]
+  depends_on       = [helm_release.image-updater]
   name             = "argocd-app"
   repository       = "https://argoproj.github.io/argo-helm"
   chart            = "argocd-apps"
@@ -55,14 +63,4 @@ resource "helm_release" "app" {
   ]
 }
 
-resource "helm_release" "image-updater" {
-  #   depends_on       = [module.nginx-controller]
-  name             = "argocd-image-updater"
-  repository       = "https://argoproj.github.io/argo-helm"
-  chart            = "argocd-image-updater"
-  namespace        = "argocd"
-  create_namespace = true
-  values = [
-    "${file("values1.yaml")}"
-  ]
-}
+

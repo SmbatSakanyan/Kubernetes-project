@@ -2,6 +2,10 @@ terraform {
   source = "../../../../modules/infrustructure-modules/cluster"
 }
 
+include "root" {
+  path = find_in_parent_folders()
+}
+
 inputs = {
   cluster_name    = "testcluster1"
   vpc_id = dependency.vpc.outputs.vpc_id
