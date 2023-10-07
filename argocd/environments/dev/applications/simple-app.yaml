@@ -8,7 +8,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: development
+  project: default
   source:
     repoURL: https://github.com/SmbatSakanyan/Kubernetes-project 
     targetRevision: main
