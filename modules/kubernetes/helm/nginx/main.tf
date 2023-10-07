@@ -7,7 +7,6 @@ provider "helm" {
       args        = ["eks", "get-token", "--cluster-name", var.cluster_name, "--region", "us-east-2", "--output", "json"]
       command     = "aws"
     }
-    # config_path = "~/.kube/config"
   }
 }
 # resource "aws_ecr_repository" "week4_ecr" {
@@ -59,7 +58,7 @@ resource "helm_release" "app" {
   namespace        = "argocd"
   create_namespace = true
   values = [
-    "${file("values.yaml")}"
+    "${file("appofapps.yaml")}"
   ]
 }
 
