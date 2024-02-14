@@ -3,18 +3,18 @@ kind: Application
 metadata:
   name: simple-app
   namespace: argocd
-  annotations:
-      argocd-image-updater.argoproj.io/image-list: simple-app=548844171305.dkr.ecr.us-east-2.amazonaws.com/dimple-app
-      argocd-image-updater.argoproj.io/simple-app.update-strategy: latest
-      argocd-image-updater.argoproj.io/write-back-method: argocd
+  # annotations:
+  #     argocd-image-updater.argoproj.io/image-list: simple-app=548844171305.dkr.ecr.us-east-2.amazonaws.com/dimple-app
+  #     argocd-image-updater.argoproj.io/simple-app.update-strategy: latest
+  #     argocd-image-updater.argoproj.io/write-back-method: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: https://github.com/SmbatSakanyan/Kubernetes-project 
+    repoURL: https://github.com/Khachik001/helm
     targetRevision: main
-    path: helm 
+    path: Chart-test 
   destination:
     server: https://kubernetes.default.svc
     namespace: default
