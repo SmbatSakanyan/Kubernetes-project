@@ -16,7 +16,6 @@ spec:
       values: |
         containers.tag: user_redis
         ports.container_port: 8087
-        host: user.am
     repoURL: https://github.com/Khachik001/helm
     targetRevision: main
     path: Chart-test
