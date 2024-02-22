@@ -12,6 +12,9 @@ metadata:
 spec:
   project: default
   source:
+    helm:
+      values: |
+        ingress.enabled: true
     repoURL: https://github.com/Khachik001/helm
     targetRevision: main
     path: Chart-test 
