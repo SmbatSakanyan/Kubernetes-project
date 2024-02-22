@@ -13,9 +13,9 @@ spec:
   project: default
   source:
     helm:
-      values: |
-        myingress: 
-          enabled: true
+      parameters:
+        - name: "myingress.enabled"
+          value: "true"
     repoURL: https://github.com/Khachik001/helm
     targetRevision: main
     path: Chart-test 
