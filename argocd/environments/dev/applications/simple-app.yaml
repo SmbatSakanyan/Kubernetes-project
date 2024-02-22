@@ -15,7 +15,7 @@ spec:
     helm:
       values: |
         myingress: 
-          enabled: false
+          enabled: true
     repoURL: https://github.com/Khachik001/helm
     targetRevision: main
     path: Chart-test 
