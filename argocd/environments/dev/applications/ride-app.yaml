@@ -16,7 +16,6 @@ spec:
       values: |
         containers.tag: ride_redis
         ports.container_port: 8088
-        host: ride.am
     repoURL: https://github.com/Khachik001/helm
     targetRevision: main
     path: Chart-test
