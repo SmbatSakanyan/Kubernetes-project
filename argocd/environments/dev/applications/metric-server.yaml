@@ -1,23 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: keda
+  name: metrics-server
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: keda
+    namespace: metrics-server
     server: https://kubernetes.default.svc
   source:
-    repoURL: https://kedacore.github.io/charts
-    chart: keda
-    targetRevision: 2.13.1
-    helm:
-      values: |
-        serviceAccount:
-          annotations: 
-            {{ toYaml .Values.keda.serviceAccount.annotations | indent 4 }}         
+    repoURL: https://kubernetes-sigs.github.io/metrics-server/
+    chart: metrics-server
+    targetRevision: 3.12.0
   project: default
   syncPolicy:
     automated:
@@ -25,7 +20,6 @@ spec:
       selfHeal: true
       allowEmpty: false
     syncOptions:
-      - ServerSideApply=true 
       - Validate=true
       - CreateNamespace=true
       - PrunePropagationPolicy=foreground
