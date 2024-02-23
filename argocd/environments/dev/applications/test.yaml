@@ -12,9 +12,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/kubernetes-sigs/external-dns
-    targetRevision: main
-    path: charts/external-dns/
+    repoURL: oci://registry-1.docker.io/bitnamicharts/external-dns
+    targetRevision: 6.34.2
+    chart: external-dns
   destination:
     server: https://kubernetes.default.svc
     namespace: default
