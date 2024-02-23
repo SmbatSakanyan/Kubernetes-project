@@ -12,6 +12,11 @@ metadata:
 spec:
   project: default
   source:
+    helm:
+      values: |
+        serviceAccount:
+          annotations:
+            eks.amazonaws.com/role-arn: arn:aws:iam::548844171305:role/external_dns_role_name
     repoURL: https://charts.bitnami.com/bitnami
     targetRevision: 6.34.2
     chart: external-dns
