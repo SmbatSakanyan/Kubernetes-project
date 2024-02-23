@@ -12,7 +12,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://kubernetes-sigs.github.io/external-dns/
+    repoURL: https://kubernetes-sigs.github.io/
     targetRevision: 1.14.3
     path: external-dns
   destination:
