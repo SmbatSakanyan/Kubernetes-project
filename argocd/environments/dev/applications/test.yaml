@@ -17,7 +17,7 @@ spec:
         serviceAccount:
           annotations:
             eks.amazonaws.com/role-arn: arn:aws:iam::548844171305:role/external_dns_role_name
-    repoURL: oci://registry-1.docker.io/bitnamicharts/
+    repoURL: registry-1.docker.io/bitnamicharts/
     targetRevision: 6.34.2
     path: external-dns
     
