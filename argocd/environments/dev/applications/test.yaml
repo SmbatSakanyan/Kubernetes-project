@@ -12,9 +12,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/Khachik001/helm
+    repoURL: https://github.com/kubernetes-sigs/external-dns
     targetRevision: main
-    path: Chart-test
+    path: charts/external-dns/
   destination:
     server: https://kubernetes.default.svc
     namespace: default
