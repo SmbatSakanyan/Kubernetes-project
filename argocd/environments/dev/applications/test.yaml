@@ -12,7 +12,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: oci://registry-1.docker.io/bitnamicharts/external-dns
+    repoURL: oci://registry-1.docker.io/bitnamicharts/
     targetRevision: 6.34.2
     chart: external-dns
   destination:
