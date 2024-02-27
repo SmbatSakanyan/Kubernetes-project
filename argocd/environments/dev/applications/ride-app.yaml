@@ -14,7 +14,7 @@ spec:
   source:
     helm:
       values: |
-        containers.tag: ride_redis
+        containers.tag: ride
         ports.container_port: 8088
     repoURL: https://github.com/Khachik001/helm
     targetRevision: main
