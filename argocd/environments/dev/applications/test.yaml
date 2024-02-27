@@ -11,15 +11,16 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
-  source:
-    helm:
-      values: |
-        serviceAccount:
-          annotations:
-            eks.amazonaws.com/role-arn: arn:aws:iam::548844171305:role/external_dns_role_name
-    repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 6.34.2
+  sources:
+  - repoURL: https://charts.bitnami.com/bitnami
     chart: external-dns
+    targetRevision: 6.34.2
+    helm:
+      valueFiles:
+      - $values/charts/external_secrets/values.yaml 
+  - repoURL: https://github.com/Khachik001/chart_values.git
+    targetRevision: HEAD
+    ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: default
