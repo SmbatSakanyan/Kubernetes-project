@@ -14,7 +14,7 @@ spec:
   source:
     helm:
       values: |
-        containers.tag: user_redis
+        containers.tag: user
         ports.container_port: 8087
     repoURL: https://github.com/Khachik001/helm
     targetRevision: main
