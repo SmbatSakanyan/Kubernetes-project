@@ -13,6 +13,8 @@ spec:
     targetRevision: 14.12.2
     helm:
       values: |
+        auth:
+          enabled: false
         persistence:
           size: 10Gi
   destination:
