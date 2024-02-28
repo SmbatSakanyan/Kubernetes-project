@@ -16,6 +16,10 @@ spec:
         persistence:
           size: 10Gi
           storageClass: "gp3"
+      auth:
+          enabled: true
+          rootUser: "root"
+          rootPassword: "dbpass"
   destination:
     server: https://kubernetes.default.svc
     namespace: mongo
