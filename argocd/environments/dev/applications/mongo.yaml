@@ -11,11 +11,10 @@ spec:
     repoURL: https://charts.bitnami.com/bitnami
     chart: mongodb
     targetRevision: 14.12.2
-    # helm:
-    #   values: |
-    #     persistence:
-    #       size: 10Gi
-    #       storageClass: "gp3"
+    helm:
+      values: |
+        persistence:
+          size: 10Gi
   destination:
     server: https://kubernetes.default.svc
     namespace: mongo
