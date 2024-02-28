@@ -15,7 +15,7 @@ spec:
       values: |
         persistence:
           size: 10Gi
-          storageClass: "gp3"
+          # storageClass: "gp3"
       auth:
           enabled: true
           rootUser: "root"
