@@ -14,7 +14,9 @@ spec:
     helm:
       values: |
         auth:
-          enabled: false
+          enabled: true
+          rootUser: admin
+          rootPassword: test1234
         persistence:
           size: 10Gi
   destination:
