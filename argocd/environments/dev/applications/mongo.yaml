@@ -15,8 +15,7 @@ spec:
       values: |
         auth:
           enabled: true
-          rootUser: admin
-          rootPassword: test1234
+          rootPassword: "test1234"
         persistence:
           size: 10Gi
   destination:
