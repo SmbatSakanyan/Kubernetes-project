@@ -15,10 +15,6 @@ spec:
       values: |
         persistence:
           size: 10Gi
-        auth:
-          enabled: true
-          rootUser: "root"
-          rootPassword: "dbpass"
   destination:
     server: https://kubernetes.default.svc
     namespace: mongo
