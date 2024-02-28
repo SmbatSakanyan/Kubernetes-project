@@ -16,6 +16,9 @@ spec:
         auth:
           enabled: true
           rootPassword: "test1234"
+          usernames: [ "inituser" ]
+          passwords: [ "initpass" ]
+          databases: [ "initdb" ]
         persistence:
           size: 10Gi
   destination:
