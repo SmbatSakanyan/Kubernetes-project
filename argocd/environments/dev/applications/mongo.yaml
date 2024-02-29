@@ -14,7 +14,7 @@ spec:
     helm:
       values: |
         image:
-          tag: 5.0.5-debian-10-r42
+          tag: 5.0.24-debian-11-r20
         persistence:
           size: 10Gi
         auth:
