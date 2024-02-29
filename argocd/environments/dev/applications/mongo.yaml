@@ -13,8 +13,15 @@ spec:
     targetRevision: 14.12.2
     helm:
       values: |
+        image:
+          tag: 5.0-debian-11
         persistence:
           size: 10Gi
+        auth:
+          usernames: [ "velvioouser" ]
+          passwords: [ "testpass" ]
+          databases: [ "velvioo" ]
+          enabled: true
   destination:
     server: https://kubernetes.default.svc
     namespace: mongo
