@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: cert-manager-cluster-issuer
-  namespace: argo
+  namespace: argocd
 spec:
   project: default
   sources:
@@ -30,7 +30,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: cert-manager
-  namespace: argo
+  namespace: argocd
 spec:
   project: default
   sources:
