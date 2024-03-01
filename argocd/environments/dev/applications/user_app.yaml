@@ -14,8 +14,10 @@ spec:
   source:
     helm:
       values: |
-        containers.tag: user
-        ports.container_port: 8087
+        containers:
+          tag: user
+        ports:
+          container_port: 8087
     repoURL: https://github.com/Khachik001/helm
     targetRevision: main
     path: Chart-test
