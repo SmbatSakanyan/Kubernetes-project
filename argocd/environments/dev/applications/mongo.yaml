@@ -23,6 +23,12 @@ spec:
           passwords: [ "testpass" ]
           databases: [ "velvioo" ]
           enabled: true
+        resources:
+          limits:
+            memory: 2Gi
+          requests:
+            cpu: 1000m
+            memory: 2Gi
   destination:
     server: https://kubernetes.default.svc
     namespace: mongo
