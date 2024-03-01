@@ -18,6 +18,7 @@ spec:
         persistence:
           size: 10Gi
         auth:
+          rootPassword: "test1234"
           usernames: [ "velvioo" ]
           passwords: [ "testpass" ]
           databases: [ "velvioo" ]
