@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: simple-app
+  name: main
   namespace: argocd
   # annotations:
   #     argocd-image-updater.argoproj.io/image-list: simple-app=548844171305.dkr.ecr.us-east-2.amazonaws.com/dimple-app
