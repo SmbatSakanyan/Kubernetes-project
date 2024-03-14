@@ -17,7 +17,7 @@ spec:
     targetRevision: 6.34.2
     helm:
       valueFiles:
-      - $values/charts/external_dns/values.yaml 
+      - $values/charts/external_dns/values_dev.yaml 
   - repoURL: https://github.com/Khachik001/chart_values.git
     targetRevision: HEAD
     ref: values
