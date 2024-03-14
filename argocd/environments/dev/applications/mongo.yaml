@@ -29,6 +29,20 @@ spec:
           requests:
             cpu: 1000m
             memory: 2Gi
+        tolerations: 
+        - key: appskey
+          effect: NoSchedule
+          operator: Exists
+        arbiter:
+          tolerations: 
+          - key: appskey
+            effect: NoSchedule
+            operator: Exists
+        hidden:
+          tolerations: 
+          - key: appskey
+            effect: NoSchedule
+            operator: Exists
   destination:
     server: https://kubernetes.default.svc
     namespace: mongo
