@@ -17,6 +17,8 @@ spec:
       parameters:
         - name: "myingress.enabled"
           value: "true"
+        - name: "host"
+          value: "devapi.velvioo.brainscale.cloud"
     repoURL: https://github.com/Khachik001/helm
     targetRevision: main
     path: Chart-test 
