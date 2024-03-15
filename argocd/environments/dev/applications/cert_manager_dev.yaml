@@ -1,1 +1,54 @@
-
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager-cluster-issuer
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: https://charts.adfinis.com
+    chart: cert-manager-issuers
+    targetRevision: 0.2.5
+    helm:
+      valueFiles:
+      - $values/charts/cluster_issuers/values.yaml
+  - repoURL: https://github.com/Khachik001/chart_values.git
+    targetRevision: main
+    ref: values
+  syncPolicy:
+    # automated:
+    #   prune: true
+    #   selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+  destination:
+    namespace: cert-manager
+    server: https://kubernetes.default.svc
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: https://charts.jetstack.io
+    chart: cert-manager
+    targetRevision: 1.12.4
+    helm:
+      valueFiles:
+      - $values/charts/cert_manager/values.yaml
+  - repoURL: https://github.com/Khachik001/chart_values.git
+    targetRevision: main
+    ref: values
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+  destination:
+    namespace: cert-manager
+    server: https://kubernetes.default.svc
