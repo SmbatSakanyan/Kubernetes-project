@@ -1,0 +1,33 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: external-dns
+  namespace: argocd
+  # annotations:
+  #     argocd-image-updater.argoproj.io/image-list: simple-app=548844171305.dkr.ecr.us-east-2.amazonaws.com/dimple-app
+  #     argocd-image-updater.argoproj.io/simple-app.update-strategy: latest
+  #     argocd-image-updater.argoproj.io/write-back-method: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+  - repoURL: https://charts.bitnami.com/bitnami
+    chart: external-dns
+    targetRevision: 6.34.2
+    helm:
+      valueFiles:
+      - $values/charts/external_dns/values.yaml 
+  - repoURL: https://github.com/Khachik001/chart_values.git
+    targetRevision: HEAD
+    ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true 
+    syncOptions:
+    - CreateNamespace=true
