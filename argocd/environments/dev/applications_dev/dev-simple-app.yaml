@@ -19,6 +19,8 @@ spec:
           value: "true"
         - name: "host"
           value: "devapi.velvioo.brainscale.cloud"
+        - name: "keda.enabled"
+          value: "true"
     repoURL: https://github.com/Khachik001/helm
     targetRevision: main
     path: Chart-test 

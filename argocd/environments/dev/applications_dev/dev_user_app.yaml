@@ -14,6 +14,8 @@ spec:
           tag: user
         ports:
           container_port: 8087
+        keda:
+          enabled: true
     repoURL: https://github.com/Khachik001/helm
     targetRevision: main
     path: Chart-test
